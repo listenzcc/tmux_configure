@@ -12,6 +12,7 @@ TMUX_POWERLINE_SEG_WEATHER_UPDATE_PERIOD_DEFAULT="600"
 #    $ ./generate_rc.sh
 #    $ mv ~/.tmux-powerlinerc.default ~/.tmux-powerlinerc
 # 2. You set TMUX_POWERLINE_SEG_WEATHER_LOCATION.
+export TMUX_POWERLINE_SEG_WEATHER_LOCATION="Beijing"
 
 if shell_is_bsd  && [ -f /user/local/bin/grep  ]; then
 	TMUX_POWERLINE_SEG_WEATHER_GREP_DEFAULT="/usr/local/bin/grep"
@@ -125,7 +126,7 @@ __yahoo_weather() {
 		if [ "$TMUX_POWERLINE_SEG_WEATHER_UNIT" == "k" ]; then
 			degree=$(echo "${degree} + 273.15" | bc)
 		fi
-		condition_symbol=$(__get_condition_symbol "$condition" "$sunrise" "$sunset") 
+		condition_symbol=$(__get_condition_symbol "$condition" "$sunrise" "$sunset")
 		echo "${condition_symbol} ${degree}°$(echo "$TMUX_POWERLINE_SEG_WEATHER_UNIT" | tr '[:lower:]' '[:upper:]')" | tee "${tmp_file}"
 	fi
 }

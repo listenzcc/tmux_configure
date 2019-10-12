@@ -83,16 +83,16 @@ __battery_osx() {
 	__battery_linux() {
 		case "$SHELL_PLATFORM" in
 			"linux")
-				BATPATH=/sys/class/power_supply/BAT0
+				BATPATH=/sys/class/power_supply/battery
 				if [ ! -d $BATPATH ]; then
 					BATPATH=/sys/class/power_supply/BAT1
 				fi
 				STATUS=$BATPATH/status
-				BAT_FULL=$BATPATH/charge_full
+				BAT_FULL=$BATPATH/capacity
 				if [ ! -r $BAT_FULL ]; then
 					BAT_FULL=$BATPATH/energy_full
 				fi
-				BAT_NOW=$BATPATH/charge_now
+				BAT_NOW=$BATPATH/capacity
 				if [ ! -r $BAT_NOW ]; then
 					BAT_NOW=$BATPATH/energy_now
 				fi
@@ -140,6 +140,7 @@ __battery_osx() {
 
 	__linux_get_bat() {
 		bf=$(cat $BAT_FULL)
+        bf='100'
 		bn=$(cat $BAT_NOW)
 		if [ $bn -gt $bf ]; then
 			bn=$bf

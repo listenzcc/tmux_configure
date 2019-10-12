@@ -1,3 +1,5 @@
+# Copy from [erikw/tmux-powerline](https://github.com/erikw/tmux-powerline), add my custom configure.
+
 # DEPRECATION WARNING
 This project is in a maintenance mode and no future functionality is likely to be added. tmux-powerline, with all other powerline projects, is replaced by the new unifying [powerline](https://github.com/Lokaltog/powerline). However this project is still functional and can serve as a lightweight alternative for non-python users.
 
